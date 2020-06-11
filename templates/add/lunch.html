@@ -1,0 +1,56 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lunch Entry...</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+	<!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">   
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">  
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+<script type="text/javascript">
+	function myalert(){
+    	alert("Data has been Successfully Submitted")
+    }
+</script>
+</head>
+<body background="{% static 'images/bg7.jpg' %}">
+
+	<header class="top-navbar">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container">
+				<a class="navbar-brand">
+					<img src="{% static 'images/logo1.png' %}" alt="" />
+				</a>
+			</div>
+		</nav>
+	</header>
+<br><br><br><br><br><br>
+	<form action="luentry" method="POST" autocomplete="off" Style="display: inline-block;font-size: 21px;color:white;padding: 0px 20px;font-family:'times'">
+			{% csrf_token %}
+				<div class="form-row">
+					{% if messages %}
+						<ul class="messages" style="padding-left: 450px">
+   			 				{% for message in messages %}
+    							<li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+    						{% endfor %}
+						</ul>
+					{% endif %}
+				<div class="form-group col-md-6 mb-3">
+					{{ value }}
+				</div>
+			</div>
+			<button type="submit" class="btn btn-lg btn-circle btn-outline-new-white" Style="border-radius: 12px;box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)">Submit</button>
+			<a class="btn btn-lg btn-circle btn-outline-new-white" href="index" role="button" Style="border-radius: 12px;box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)">Return to Homepage</a>
+		</form>
+</body>
+</html>

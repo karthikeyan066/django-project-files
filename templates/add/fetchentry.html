@@ -1,0 +1,98 @@
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Fetch Entry....</title>
+  <style>body {font-family: Times, sans-serif;}</style>
+
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+  <!-- Fengyuan Chen's Datepicker -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.css" integrity="sha256-b88RdwbRJEzRx95nCuuva+hO5ExvXXnpX+78h8DjyOE=" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js" integrity="sha256-/7FLTdzP6CfC1VBAj/rsp3Rinuuu9leMRGd354hvk0k=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">   
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">  
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+</head>
+<style type="text/css">
+    #tableDiv {display:none;}
+    #tableDiv:target {display:block!important;}
+</style>
+<body background="{% static 'images/bg7.jpg' %}">
+
+  <header class="top-navbar">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand">
+          <img src="{% static 'images/logo1.png' %}" alt="" />
+        </a>
+      </div>
+    </nav>
+  </header>
+<br><br><br><br><br><br>
+<div style="padding-left: 20px">
+<form autocomplete="off" action="fetchentry" method="POST">
+		{% csrf_token %}
+		<label for="name" style="color: white;font-size: 21px;font-family: times">Customer Name</label>
+		<input type="text" name="Customer Name">
+ 		<label type="text" style="color: white;font-family: times;font-size: 21px">Date</label>
+  	<input id="datepicker" name='Date'>
+  	<br>
+  	<button type="submit" class="btn btn-lg btn-circle btn-outline-new-white" Style="border-radius: 12px;box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)" onclick="showTable();">Enter</button>
+  	<a class="btn btn-lg btn-circle btn-outline-new-white" href="index" role="button" Style="border-radius: 12px;box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)">Return to Homepage</a>
+    <input type="button" value="Hide" id="button1">
+   
+  		
+  </form >
+<div class="tableDiv">  
+  <table border="5" width="75%" style="padding: 20px;" id="myTable" >
+  	<tr align="center" style="color: white">
+  	<th>Customer id</th><th>Customer Name</th><th>Date</th><th>Breakfast</th><th>Lunch</th><th>Dinner</th>
+  </tr>
+  {% for value in all %}
+  <tr align="center" style="font-family:'times';color: white;font-size: 18px">
+  	<td>{{ value.id }}</td>
+  	<td>{{ value.Customer_Name }}</td>
+  	<td>{{ value.Date }}</td>
+  	<td>{{ value.BreakFast }}</td>
+  	<td>{{ value.Lunch }}</td>
+  	<td>{{ value.Dinner }}</td>
+  </tr>		
+  	{% endfor%}
+  </table>
+</div>
+</div>
+  		
+  <script>
+    $(function () {
+      $("#datepicker").datepicker({
+	format: 'yyyy-mm-dd'
+     });
+});</script>
+<script>
+
+  function showTable() {
+       document.getElementById("myTable").style.visibility = "visible";
+
+   }
+  
+
+   $(document).ready(function(){ 
+  $('#button1').click(function(){ 
+    $("#myTable").find("tr:gt(0)").remove();
+  });
+});
+
+     
+</script>
+</body>
+</html>

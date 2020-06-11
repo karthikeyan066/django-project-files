@@ -1,0 +1,285 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Customer Register</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">    
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">    
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+	
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+ 	<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+  	<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+  	<link rel="stylesheet" href="/resources/demos/style.css" />
+
+  	
+      <script>
+         function functionAlert(msg, gfg) {
+            var confirmBox = $("#container"); 
+              
+            /* Trace message to display */
+            confirmBox.find(".message").text(msg); 
+              
+            /* Calling function */
+            confirmBox.find(".yes").unbind().click(function()  
+            { 
+            confirmBox.hide(); 
+            }); 
+            confirmBox.find(".yes").click(gfg); 
+            confirmBox.show(); 
+              
+            confirmBox.find(".no").unbind().click(function()  
+            { 
+            confirmBox.hide(); 
+            }); 
+            confirmBox.find(".no").click(gfg); 
+            confirmBox.show();
+         }
+      </script>
+
+
+<style>
+	body {font-family: Times, Helvetica, sans-serif;}
+	input[type=text], select {
+	width: 14%;
+	padding: 5px;
+	margin: 30px 15px;
+	display: inline-block;
+	border: 5px;
+	border-radius: 4px;
+	box-sizing: border-box;
+
+	}
+
+	input[type=submit] {
+	  width: 50%;
+	  /*background-color: blue;*/
+	  color: white;
+	  padding: 15px 40px;
+	  margin: 25px 0;
+	  border: none;
+	  border-radius: 4px;
+	  cursor: pointer;
+	 
+	}
+	input[type=submit]:hover {
+	  background-color: black; 
+	 
+	}
+
+	div {
+	  border-radius: 30px;
+	  padding: 30px 10px;
+	}
+
+	.center {
+	  margin: 0;
+	  position: absolute;
+	  top: 68%;
+	  left: 45%;
+	  -ms-transform: translate(-50%, -50%);
+	  transform: translate(-50%, -50%);
+	  width: 40%
+	  
+	}
+
+
+#confirm {
+            display: none;
+            background-color: #F3F5F6;
+            color: #000000;
+            border: 1px solid #aaa;
+            position: fixed;
+            width: 300px;
+            height: 100px;
+            left: 40%;
+            top: 40%;
+            box-sizing: border-box;
+            text-align: center;
+         }
+#confirm button {
+            background-color: #FFFFFF;
+            display: inline-block;
+            border-radius: 12px;
+            border: 4px solid #aaa;
+            padding: 5px;
+            text-align: center;
+            width: 60px;
+            cursor: pointer;
+         }
+#confirm .message {
+            text-align: left;
+         }
+
+
+/* Designing dialog box */
+#container { 
+    display: none; 
+    background-image: linear-gradient(to right, #66a80f, #c0eb75); 
+    background-size:auto; 
+    color: white; 
+    position: fixed; 
+    width: 100%; 
+    border-radius: 5px; 
+    top:8%;
+    left: 80%; 
+    margin-left: -160px; 
+    padding: 16px 20px 8px; 
+    box-sizing: border-box; 
+    transform: translate(-50%, -80%);
+} 
+  
+/* Designing dialog box's okay button */
+#container .yes { 
+    background-color: #5c940d; 
+    display: inline-block; 
+    border-radius: 5px; 
+    border: 2px solid gray; 
+    padding: 5px; 
+    margin-right: 20px; 
+    text-align: center; 
+    width: 40%;
+
+
+
+   
+} 
+  
+#container .no { 
+    background-color: #5c940d; 
+    display: inline-block; 
+    border-radius: 5px; 
+    border: 2px solid gray; 
+    padding: 5px; 
+    margin-right: 10px; 
+    text-align: center; 
+    width: 40%; 
+     
+} 
+  
+#container .yes:hover { 
+    background-color: lightgreen; 
+
+} 
+  
+#container .no:hover { 
+    background-color: #99e9f2; 
+
+} 
+  
+/* Dialog box message decorating */
+#container .message { 
+    text-align: center; 
+    padding: 10px 30px; 
+    font-size:20px
+} 
+
+
+</style>
+</head>
+
+	<body background="{% static 'images/bg3.jpg' %}">
+	<!-- Start header -->
+    	<header class="top-navbar">
+        	
+                	<a class="navbar-brand" >
+                    	<img src="{% static 'images/logo1.png' %}" alt="" />
+                	</a>             
+            	
+    	</header>s
+	
+	<form action="Register" method="POST" autocomplete="off">
+  		{% csrf_token %}
+  			<div class = "form-group form-inline">
+	  		
+			    <label for="customer name" style="color:white; font-size:30px;">Customer Name</label>
+		    	<input type="text" name="input_customerName" placeholder="Customer name.."><br>
+	    
+			    <label for="date" style="color:white; font-size: 30px">Date</label>
+				<input type="text" id="datepicker" name="input_date" placeholder ="yyyy/mm/dd"/>	    	
+			</div>
+	    	
+    	
+	   
+		<label for="breakfast" style="color:white; font-size: 30px">Breakfast</label>
+	    <select type="text" style="font-size: 20px" name="input_breakfast">
+	    	<option value="Dosa">Dosa</option>
+	    	<option value="Itly">Itly</option>
+	    	<option value="Pongal">Pongal</option>
+	    	<option value="Masal Puri">Masal Puri</option>
+	    	<option value="Appam">Appam</option>
+	    	<option value="Masal Dosa">Masal Dosa</option>
+	    	<option value="Vadai">Vadai</option>
+	    </select>	
+	    <label for="Lunch" style="color:white; font-size: 30px">Lunch</label>
+	    <select type="text" style="font-size: 20px" name="input_lunch">
+
+	    	<option value="Full Meals">Full Meals</option>
+	    	<option value="Veg_Biriyani">Veg_Biriyani</option>
+	    	<option value="Chicken_Biriyani">Chicken_Biriyani</option>
+	    	<option value="Mutton_Biriyani">Mutton_Biriyani</option>
+	    	<option value="Egg_Rice">Egg_Rice</option>
+	    	<option value="Fish_Gravy and Prawn">Fish_Gravy and Prawn</option>
+	    	<option value="Thanthuri">Thanthuri</option>
+	    	<option value="Omlet">Omlet</option>
+	    </select>
+	    <label for="dinner" style="color:white; font-size: 30px">Dinner</label>
+	    <select type="text" style="font-size: 20px" name="input_dinner"><br>
+	    	<option value="Parotta">Parotta</option>
+	    	<option value="Chappathi">Chappathi</option>
+	    	<option value="Naan">Naan</option>
+	    	<option value="Chill Parotta">Chill Parotta</option><option value="Kothu Parotta">Kothu Parotta</option>
+	    	<option value="Masal Dosa">Masal Dosa</option>
+	    	<option value="Noodles">Noodles</option>
+	    	<option value="Fried Rice">Fried Rice</option>
+	    </select>
+	    
+		<div class="center">
+		<button id = "subButton" formtarget="_self" type="submit" value="Submit" class="btn btn-primary" style="font-size : 20px;" onclick="functionAlert();">SUBMIT</button>
+
+		</form>
+ 		 <div id="container" class="w3-show-inline-block"> 
+ 		 	
+	        <div class="message"> 
+	            Data has been submitted successfully!!!!<br>Do You want to Add another customer data?</div>
+	            <div class="w3-bar" style="display: flex;align-items: center;justify-content: center;"> 
+	        <button type="submit" class="no">Return to Homepage</button>
+	       	<button type="submit" class="yes" onclick = "window.location.replace('index')">Add Data</button>
+	       </div>
+	    </div> 
+
+
+	<script>
+  $(function() {
+    $( "#datepicker" ).datepicker({
+    	dateFormat: 'yy-mm-dd'
+
+    });
+  });
+
+  $(document).ready(function () {
+  // Listen to click event on the submit button
+  $('#subButton').click(function (e) {
+
+    e.preventDefault();
+
+    
+  });
+});
+
+
+  </script>
+	</body>
+
+
+</html>

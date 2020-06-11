@@ -1,0 +1,28 @@
+<html>
+<h2>Show or Hide table in JavaScript</h2>
+<style>
+    #tableDiv {display:none;}
+    #tableDiv:target {display:block!important;}
+</style>
+<body>
+<div id="tableDiv">
+    <table>
+        <tr>
+            <td>something</td>
+        </tr>
+    </table>
+</div>
+
+<input type="button" value="Show" onClick="showTable()"/>
+<input type="button" value="Hide" onClick="hideTable()"/>
+
+<script type="text/javascript">
+   function showTable() {
+       location.hash='tableDiv';
+   }
+   function hideTable() {
+       location.hash='';
+   }
+</script>
+</body>
+</html>
