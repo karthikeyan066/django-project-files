@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '0@je4_f@qavkry75(s=^6hah=18__uwu*#5d1yoj2=ssut(b_^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://blooming-chamber-81654.herokuapp.com']
 
 
 # Application definition
