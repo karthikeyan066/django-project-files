@@ -1,2 +1,0 @@
-# project-blog
-# django-blog
