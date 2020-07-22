@@ -1,7 +1,5 @@
 from django import forms
 from .models import Register_form, breakfast_option, lunch_option,dinner_option
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Submit, Row, Column
 from bootstrap_datepicker_plus import DatePickerInput
 
 class Customer(forms.Form):
